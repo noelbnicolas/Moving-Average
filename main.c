@@ -6,7 +6,7 @@
  * main.c
  */
 
-
+//checking git commit (added this comment)
 #define N_AVG_SAMPLES 2
 #define DATALENGTH 10
 

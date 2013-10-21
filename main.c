@@ -1,12 +1,12 @@
-#include <msp430.h> 
-//Noel B Nicolas
-//ECE 382
+//
+// main.c
+// Noel B Nicolas
+// ECE 382
 // This program will write a function that computes the "moving average" for a stream of data points it is receiving
-/*
- * main.c
- */
+//
 
-//checking git commit (added this comment)
+#include <msp430.h> 
+
 #define N_AVG_SAMPLES 2
 #define DATALENGTH 10
 
@@ -28,48 +28,53 @@ int main(void) {
 
     int array[N_AVG_SAMPLES];
     int i;
+
     array[0]= 0;
     array[1]= 0;
+
     for (i=0; i < arrayLength; i++){
     	getAverage(array, N_AVG_SAMPLES);
     }
 
-
-return (0);
+    return 0;
 }
 
 // Array functions
 int getAverage(int array[], unsigned int arrayLength){
 	int sample = 0;
 	int i;
+
 	for(i =0; i< arrayLength; i++){
 		sample += array[i];
 	}
-	return (sample/arrayLength);
+
+	return sample/arrayLength;
 }
 
 
 
 int max(int array[], unsigned int arrayLength){
-	int max;
-	max= array[0];
+	int max = array[0];
 	int i;
+
 	for(i=1; i<arrayLength; i++)
 		if(array[i]>max){
 			max=array[i];
-		}
-	return(max);
+        }
+
+	return max;
 }
+
 int min(int array[], unsigned int arrayLength){
-	int min;
-	min=array[0];
+	int min = array[0];
 	int i;
+
 	for(i=1; i<arrayLength; i++)
 		if(array[i]>min){
 				min=array[i];
-			}
-		return(min);
-	}
+        }
+    return min;
+}
 
 unsigned int range(int array[], unsigned int arrayLength){
 	int End;
@@ -78,5 +83,5 @@ unsigned int range(int array[], unsigned int arrayLength){
 	End = max(array, arrayLength);
 	Begin = min(array, arrayLength);
 
-	return( End - Begin);
+	return End - Begin;
 }
